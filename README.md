@@ -1,21 +1,21 @@
 # buynomics
 
-Install Playwright
+Install Playwright: </br>
 npm init playwright@latest
 
-Run tests
+Run tests: </br>
 npx playwright test
 
-Run tests in UI mode
+Run tests in UI mode: </br>
 npx playwright test --ui
 
-Run tests in debug mode
+Run tests in debug mode: </br>
 npx playwright test
 
-Run tests in chrome browser
+Run tests in chrome browser: </br>
 npx playwright --project=chromium
 
-Show test report
+Show test report: </br>
 npx playwright show-report
 
 # Test scenario
