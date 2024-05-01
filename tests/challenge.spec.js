@@ -10,11 +10,14 @@ test("Search for galaxy samsung", async () => {
   // Open URL in current page
   await page.goto("https://www.google.com");
 
-  // Find a button with the name "Alle akzeptieren", click on it to accept terms
-  await page.getByRole("button", { name: "Alle akzeptieren" }).click();
+  //Check if there is a consent
+  if (await page.locator(".dbsFrd").isVisible()) {
+    await page.locator("#L2AGLb").click();
+  }
 
-  // Find a search field, fill "samsung galaxy" in it.
-  await page.getByLabel("Suche", { exact: true }).fill("samsung galaxy");
+  await page
+    .locator("xpath=(//textarea[@class='gLFyf'])")
+    .fill("samsung galaxy");
 
   // Click on "Enter" to perform search
   await page.keyboard.press("Enter");
@@ -24,9 +27,13 @@ test("Search for galaxy samsung", async () => {
 
   // Click on the first result
   await page.getByRole("link", { name: "Galaxy Smartphone & Handy" }).click();
+  //await page.locator("xpath=(//div[@class='dURPMd']/div)[1]").click();
 
   //Check the URL
   await expect(page).toHaveURL("https://www.samsung.com/de/smartphones/");
+
+  //
+  await expect(page.locator("#component-id").first()).toBeVisible();
 
   // Close the browser instance
   await browser.close();
