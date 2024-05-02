@@ -15,6 +15,7 @@ test("Search for galaxy samsung", async () => {
     await page.locator("#L2AGLb").click();
   }
 
+  //Find a search field and fill it with the search term
   await page
     .locator("xpath=(//textarea[@class='gLFyf'])")
     .fill("samsung galaxy");
@@ -27,12 +28,14 @@ test("Search for galaxy samsung", async () => {
 
   // Click on the first result
   await page.getByRole("link", { name: "Galaxy Smartphone & Handy" }).click();
+
+  // Click on the first result
   //await page.locator("xpath=(//div[@class='dURPMd']/div)[1]").click();
 
   //Check the URL
   await expect(page).toHaveURL("https://www.samsung.com/de/smartphones/");
 
-  //
+  //Check that navigation is visible on the website
   await expect(page.locator("#component-id").first()).toBeVisible();
 
   // Close the browser instance
